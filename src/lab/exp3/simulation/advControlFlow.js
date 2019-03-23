@@ -34,8 +34,15 @@ window.view = {
  	},
 	getInput: function() {
 		var inputValue = document.getElementById('simpleLoopInput').value
-		model.inp = Number(inputValue)
-		this.clearExecutionSection()
+		if(isNaN(inputValue) || !Number.isInteger(inputValue) || inputValue<0){
+			alert("Please give valid Inputs")
+			return false
+		}
+		else{
+			model.inp = Number(inputValue)
+			this.clearExecutionSection()
+			return true
+		}
 	},
 	getNestedInput: function() {
 		var inputValue = document.getElementById('nestedLoopInput').value
